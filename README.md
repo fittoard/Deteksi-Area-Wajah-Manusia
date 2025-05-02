@@ -71,79 +71,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-📌 Deteksi Area Wajah Menggunakan Segmentasi Warna YCbCr dan Operasi Morfologi
-Proyek ini merupakan implementasi sistem deteksi wajah pada citra berwarna menggunakan pendekatan segmentasi warna kulit pada ruang warna YCbCr yang dipadukan dengan operasi morfologi citra, sesuai dengan metode dari paper "Deteksi Area Wajah Manusia Berbasis Segmentasi Warna YCbCr dan Operasi Morfologi".
+Proyek ini merupakan implementasi sederhana dari sistem deteksi wajah pada gambar berwarna dengan pendekatan berbasis warna kulit. Metode yang digunakan mengandalkan pemisahan warna menggunakan ruang warna YCbCr, lalu dilanjutkan dengan serangkaian operasi morfologi untuk memperjelas area wajah. Semua proses ini dilakukan di lingkungan Google Colab menggunakan Python, dengan bantuan pustaka OpenCV, NumPy, dan Matplotlib.
 
-🔧 Teknologi dan Library
-Python 3 (Google Colab)
+Setelah pengguna mengunggah gambar, citra akan diproses dan dikonversi ke tiga format: RGB untuk tampilan visual, grayscale untuk thresholding berbasis intensitas, serta YCbCr yang berguna untuk mendeteksi area kulit. Deteksi warna kulit dilakukan dengan threshold pada nilai Cb dan Cr, yang umum mewakili rona warna kulit manusia. Hasil segmentasi ini kemudian diproses menggunakan morfologi seperti erosi, opening, dan dilasi untuk membersihkan noise serta memperkuat area wajah yang terdeteksi.
 
-OpenCV
-
-NumPy
-
-Matplotlib
-
-PIL (Python Imaging Library)
-
-⚙️ Alur Proses
-Upload Gambar
-Pengguna mengunggah gambar wajah berwarna dari lokal menggunakan google.colab.files.upload().
-
-Konversi Warna
-
-Gambar dikonversi dari BGR ke RGB untuk ditampilkan.
-
-Juga dikonversi ke grayscale untuk proses thresholding berbasis intensitas.
-
-Kemudian dikonversi ke YCbCr untuk segmentasi warna kulit.
-
-Segmentasi Warna Kulit
-Komponen Cb dan Cr dari ruang warna YCbCr digunakan untuk membedakan area kulit dari bukan kulit melalui threshold (0, 135, 85) hingga (255, 180, 135).
-
-Thresholding Grayscale
-Metode Otsu digunakan untuk menghasilkan threshold otomatis pada citra grayscale (sebagai pembanding proses binerisasi).
-
-Operasi Morfologi
-
-Erosi: Mengurangi noise dengan menghapus piksel pinggir.
-
-Opening: Membersihkan objek kecil yang tidak diinginkan.
-
-Dilasi: Memperluas area hasil deteksi untuk memperjelas fitur wajah.
-
-Masking
-Hasil akhir morfologi digunakan untuk menampilkan hanya area wajah dari gambar asli dengan cv2.bitwise_and().
-
-Visualisasi
-Semua tahap ditampilkan dalam layout 3 baris × 2 kolom:
-
-Citra YCbCr
-
-Citra Grayscale
-
-Deteksi Area Kulit
-
-Hasil Thresholding
-
-Hasil Operasi Morfologi
-
-Masking Akhir (deteksi wajah)
-
-📁 Struktur Output
-Setiap hasil ditampilkan menggunakan matplotlib dalam format visual yang memudahkan evaluasi proses per tahap. Kode ini sangat cocok untuk digunakan dalam:
-
-Tugas akhir/paper pengolahan citra
-
-Pembelajaran segmentasi warna kulit
-
-Dasar deteksi wajah tanpa deep learning
-
-💡 Catatan
-Akurasi deteksi bergantung pada pencahayaan dan latar belakang.
-
-Nilai threshold YCbCr dapat disesuaikan untuk warna kulit yang berbeda.
-
-Direkomendasikan menggunakan gambar wajah dengan latar sederhana untuk hasil optimal.
-
-
+Langkah terakhir adalah menampilkan hasil akhir dalam bentuk masking pada gambar asli, hanya menyisakan bagian wajah. Seluruh tahapan proses ini divisualisasikan dalam satu grid 3x2, mulai dari hasil konversi warna, deteksi kulit, hingga citra akhir. Proyek ini cocok sebagai bahan eksperimen atau pembelajaran awal dalam bidang pengolahan citra digital, khususnya bagi yang ingin memahami cara kerja segmentasi warna tanpa menggunakan model machine learning yang kompleks.
 
