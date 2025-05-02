@@ -2,7 +2,7 @@
 
 berikut merupakan code untuk mencoba nya
 
-``
+```
 # Upload gambar
 from google.colab import files
 uploaded = files.upload()
@@ -69,5 +69,5 @@ for i in range(6):
     plt.axis('off')
 plt.tight_layout()
 plt.show()
-``
+```
 
